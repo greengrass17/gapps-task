@@ -9,4 +9,4 @@
  * Main module of the application.
  */
 angular
-  .module('gappsTaskApp', []);
+  .module('gappsTaskApp', ['directive.g+signin']);

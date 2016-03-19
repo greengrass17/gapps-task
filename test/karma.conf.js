@@ -21,6 +21,7 @@ module.exports = function(config) {
     files: [
       // bower:js
       'bower_components/angular/angular.js',
+      'bower_components/angular-directive.g-signin/google-plus-signin.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
