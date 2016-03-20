@@ -4,6 +4,11 @@
 // Variables
 $gapps-color: (
   'bg-light': #EEEEEE,
+  'bg-dark': #25373D,
+  //'bg-dark': #34495E,
+  //'warn': #F44336,
+  'primary': #3D8EB9,
+  'warn': #FF6766,
 );
 $transition: (
   'button': cubic-bezier(.25,.8,.25,1)
@@ -11,10 +16,38 @@ $transition: (
 
 @import "signinButton";
 @import "fileList";
+@import "button";
+@import "sidenav";
+@import "login";
+@import "percentChart";
 
-body, html {
+body, html, a, button {
+  font-family: 'Work Sans', sans-serif;
+  letter-spacing: -0.1px;
+  color: rgba(0,0,0,0.87);
+}
+
+body, html, md-content {
+  margin: 0;
   padding: 0;
   background-color: map-get($gapps-color, 'bg-light');
+}
+
+a, button {
+  cursor: pointer;
+}
+
+.material-icons {
+  vertical-align: middle;
+}
+
+.main-content {
+  width: 80%;
+  margin: 30px auto;
+  .about {
+    flex: 1 1 40%;
+    max-width: 40%;
+  }
 }
 
 /* Responsive: Portrait tablets and up */

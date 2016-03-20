@@ -1,0 +1,58 @@
+.g-button {
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: none;
+  font-weight: 500;
+  height: 36px;
+  transition: box-shadow 0.4s map-get($transition, 'button'), transform 0.4s map-get($transition, 'button'), background-color 0.4s map-get($transition, 'button');
+//  &:hover {
+//    transform: translate(0, -3px);
+//  }
+  &:not(.g-icon-button) {
+    padding: 0 16px;
+  }
+  &.g-icon-button {
+    padding: none;
+  }
+  &:active {
+    box-shadow: none !important;
+    transform: translate(0, 2px);
+  }
+  &:focus {
+    outline: none;
+  }
+  &.g-warn {
+    &:not(.g-raised) {
+      box-shadow: 0 2px 0 desaturate(darken(#fff, 20%), 40%);
+//      &:hover {
+//        box-shadow: 0 3px 0 darken(#fff, 20%);
+//      }
+      &:active {
+        background-color: desaturate(darken(#fff, 8%), 20%);
+      }
+    }
+    &.g-raised {
+      box-shadow: 0 2px 0 desaturate(darken(map-get($gapps-color, 'warn'), 20%), 40%);
+//      &:hover {
+//        box-shadow: 0 3px 0 darken(map-get($gapps-color, 'warn'), 20%);
+//      }
+      &:active {
+        background-color: desaturate(darken(map-get($gapps-color, 'warn'), 8%), 20%);
+      }
+    }
+  }
+  &[disabled] {
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+}
+
+.g-warn {
+  &:not(.g-raised) {
+    color: map-get($gapps-color, 'warn');
+    background-color: #fff;
+  }
+  &.g-raised {
+    color: #fff;
+    background-color: map-get($gapps-color, 'warn');
+  }
+}

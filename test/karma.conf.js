@@ -23,6 +23,13 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-directive.g-signin/google-plus-signin.js',
       'bower_components/ng-google-signin/dist/ng-google-signin.js',
+      'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/angular-animate/angular-animate.js',
+      'bower_components/angular-aria/angular-aria.js',
+      'bower_components/angular-messages/angular-messages.js',
+      'bower_components/angular-material/angular-material.js',
+      'bower_components/Chart.js/Chart.js',
+      'bower_components/angular-chart.js/dist/angular-chart.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

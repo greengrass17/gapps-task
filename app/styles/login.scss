@@ -1,0 +1,23 @@
+.login {
+  flex: 1 1 auto;
+  max-height: 100%;
+  max-width: 100%;
+  background-color: map-get($gapps-color, 'bg-dark');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__modal {
+    background-color: map-get($gapps-color, 'bg-light');
+    padding: 40px;
+    text-align: center;
+    border-radius: 5px;
+    &__name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    &__text {
+      color: rgba(0,0,0,0.5);
+    }
+  }
+}

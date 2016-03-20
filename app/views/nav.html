@@ -1,0 +1,14 @@
+<section layout="column" flex>
+  <md-toolbar class="navbar">
+    <div class="brand">Drive cleaner</div>
+    <div class="md-toolbar-tools">
+      <span flex></span>
+      <img class="avatar" ng-src="{{vm.currentUser.image}}">
+      <p class="name">{{vm.currentUser.name}}</p>
+    </div>
+  </md-toolbar>
+  <md-content flex>
+
+    <div class="content" ui-view></div>
+  </md-content>
+</section>

@@ -1,13 +1,25 @@
-<button class="signin-button" ng-click="vm.signin()">
-  <span class="signin-button__icon"></span>
-  <span class="signin-button__text">Sign in with Google</span>
-</button>
 <!--  <google-map></google-map>-->
+<section layout="row" class="main-content">
+<div class="about" layout="column" layout-align="start center">
+  <percent-chart total="{{vm.limit}} GB" data="vm.data" labels="vm.labels" title="Storage"></percent-chart>
+</div>
 <div class="file-list">
+  <div class="file-list__item file-list__item--header">
+    <span class="file-list__item__name">Name</span>
+    <span class="file-list__item__size">Quota used</span>
+    <span class="file-list__item__last-view">Last viewed</span>
+    <span class="file-list__item__trash">Trash</span>
+    <span>Delete</span>
+  </div>
   <div class="file-list__item" ng-repeat="file in vm.files">
     <span class="file-list__item__name">{{file.name}}</span>
-    <span class="file-list__item__size">{{file.quotaBytesUsed}}</span>
-    <span class="file-list__item__last-view">{{vm.parseDate(file.viewedByMeTime)}}</span>
-    <button ng-click="vm.deleteFile(file.id)">Delete</button>
+    <span class="file-list__item__size">{{vm.roundTo(file.quotaBytesUsed, 6, 0)}} MB</span>
+    <span class="file-list__item__last-view">{{vm.parseDate(file.viewedByMeTime, 5)}}</span>
+    <span class="file-list__item__trash">
+      <span ng-show="file.trashed">trashed</span>
+    </span>
+    <button class="g-button g-warn g-raised g-icon-button" ng-click="vm.deleteFile(file.id)"><i class="material-icons">&#xE5CD;</i></button>
+<!--    <button class="g-button g-warn">Delete</button>-->
   </div>
 </div>
+</section>
