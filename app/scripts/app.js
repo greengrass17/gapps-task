@@ -31,6 +31,8 @@ function setConfig (GoogleSigninProvider, $stateProvider, $urlRouterProvider, Ch
   var SCOPES = [
     'https://www.googleapis.com/auth/drive.file',
     'https://www.googleapis.com/auth/drive.metadata'
+    'https://www.googleapis.com/auth/drive'
+    'https://www.googleapis.com/auth/drive.appdata'
   ];
   GoogleSigninProvider.init({
     client_id: '735680481775-osl4350j9njmbc6qge6gc4fmb0b2d7am.apps.googleusercontent.com',
