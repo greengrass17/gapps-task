@@ -7,9 +7,10 @@ md-toolbar.navbar {
     min-width: 200px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     text-transform: uppercase;
     font-weight: 500;
+    background: map-get($gapps-color, 'primary');
   }
   .avatar {
     height: 40px;
