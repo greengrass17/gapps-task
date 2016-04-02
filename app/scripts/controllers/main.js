@@ -38,11 +38,16 @@
 
       request.execute(function (resp) {
         vm.about = resp.storageQuota;
+        var limit = +(vm.about.limit);
+        var trashed = +(vm.about.usageInDriveTrash);
+        var drive = +(vm.about.usageInDrive);
+        var usage = +(vm.about.usage);
+        trashed = roundTo(vm.about.usageInDriveTrash, 9, 2);
+        var otherFolder = roundTo(drive - trashed, 9, 2);
+        var otherService = roundTo(usage - drive, 9, 2);
+        var free = roundTo(limit - usage, 9, 2);
         vm.limit = roundTo(vm.about.limit, 9, 2);
-        var trashed = roundTo(vm.about.usageInDriveTrash, 9, 2);
-        var drive = roundTo(vm.about.usageInDrive, 9, 2);
-        var usage = roundTo(vm.about.usage, 9, 2);
-        vm.data = [trashed, drive - trashed, usage - drive, vm.limit - usage];
+        vm.data = [trashed, otherFolder, otherService, free];
         vm.labels = ['Trash', 'Other drive folders', 'Other services', 'Free'];
         $scope.$apply();
       })
@@ -64,8 +69,9 @@
     }
 
     function roundTo(size, pow, dec) {
-      var intVal = Math.round(parseInt(size) * Math.pow(10, dec) / Math.pow(10, pow));
-      return intVal / Math.pow(10, dec);
+      var intVal = Math.round( +(+(size) + 'e' + (dec - pow)) );
+      console.log(+(intVal + 'e' + -dec));
+      return +(intVal + 'e' + -dec);
     }
 
     function parseDate(time) {
