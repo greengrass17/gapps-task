@@ -17,7 +17,7 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(MainCtrl.awesomeThings.length).toBe(3);
+  it('should round 123456 to 12.3', function () {
+    expect(MainCtrl.roundTo(123456, 4, 1)).toBe(12.3);
   });
 });
