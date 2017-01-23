@@ -13,5 +13,8 @@
     "angular-mocks": "^1.4.0"
   },
   "appPath": "app",
-  "moduleName": "gappsTaskApp"
+  "moduleName": "gappsTaskApp",
+  "resolutions": {
+    "angular": "^1.0.8"
+  }
 }

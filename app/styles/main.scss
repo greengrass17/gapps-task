@@ -2,18 +2,7 @@
 // endbower
 
 // Variables
-$gapps-color: (
-  'bg-light': #EEEEEE,
-  'bg-dark': #25373D,
-  //'bg-dark': #34495E,
-  //'warn': #F44336,
-  'primary': #3D8EB9,
-  'warn': #FF6766,
-);
-$transition: (
-  'button': cubic-bezier(.25,.8,.25,1)
-);
-
+@import "variables";
 @import "signinButton";
 @import "fileList";
 @import "button";
@@ -22,9 +11,8 @@ $transition: (
 @import "percentChart";
 
 body, html, a, button {
-  font-family: 'Work Sans', sans-serif;
-  letter-spacing: -0.1px;
-  color: rgba(0,0,0,0.87);
+  @include fontface;
+  color: map-get($txt-color, 'dark');
 }
 
 body, html, md-content {

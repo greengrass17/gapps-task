@@ -3,8 +3,8 @@
     <div class="brand">Drive cleaner</div>
     <div class="md-toolbar-tools">
       <span flex></span>
-      <img class="avatar" ng-src="{{vm.currentUser.image}}">
-      <p class="name">{{vm.currentUser.name}}</p>
+      <img class="avatar" ng-src="{{vm.currentUser.getImageUrl()}}">
+      <p class="name">{{vm.currentUser.getName()}}</p>
     </div>
   </md-toolbar>
   <md-content flex>

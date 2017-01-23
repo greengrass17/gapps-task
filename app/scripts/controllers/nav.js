@@ -5,10 +5,10 @@
     .module('gappsTaskApp')
     .controller('NavCtrl', NavCtrl);
 
-  NavCtrl.$inject = ['$rootScope'];
+  NavCtrl.$inject = ['currentUser', 'GoogleSignin', '$state'];
 
   /* @ngInject */
-  function NavCtrl($rootScope){
+  function NavCtrl(currentUser, GoogleSignin, $state){
     var vm = this;
 
     activate();
@@ -16,10 +16,14 @@
     ////////////////
 
     function activate() {
-      $rootScope.$watch('currentUser', function (newVal, oldVal) {
-        if (newVal !== undefined) {
-          vm.currentUser = newVal;
-        }
+      vm.currentUser = currentUser;
+    }
+
+    function signOut() {
+      GoogleSignin.signOut().then(function () {
+        $state.go('login');
+      }).catch(function (err) {
+        console.log(err);
       })
     }
   }

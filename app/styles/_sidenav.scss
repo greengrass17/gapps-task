@@ -1,13 +1,11 @@
 md-toolbar.navbar {
   background-color: map-get($gapps-color, 'bg-dark');
-  color: rgba(255, 255, 255, 0.87);
+  color: map-get($txt-color, 'light');
   flex-direction: row;
   .brand {
     width: 15%;
     min-width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
     text-transform: uppercase;
     font-weight: 500;
     background: map-get($gapps-color, 'primary');

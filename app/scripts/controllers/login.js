@@ -5,10 +5,10 @@
     .module('gappsTaskApp')
     .controller('LoginCtrl', LoginCtrl);
 
-  LoginCtrl.$inject = ['GoogleSignin', '$state', '$rootScope'];
+  LoginCtrl.$inject = ['GoogleSignin', '$state'];
 
   /* @ngInject */
-  function LoginCtrl(GoogleSignin, $state, $rootScope){
+  function LoginCtrl(GoogleSignin, $state){
     var vm = this;
     vm.signin = signin;
 
@@ -16,9 +16,8 @@
 
     function signin() {
       GoogleSignin.signIn().then(function () {
-        $rootScope.currentUser = GoogleSignin.getBasicProfile();
         $state.go('nav.main');
-      }, function (err) {
+      }).catch(function (err) {
         console.log(err);
       });
     }

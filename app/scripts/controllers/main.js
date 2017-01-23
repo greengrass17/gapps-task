@@ -19,16 +19,10 @@
     ////////////////
 
     function activate() {
-      //$scope.$on('ng-google-signin:isSignedIn', getFileLists);
-      //getFileLists();
-      $rootScope.$watch('currentUser', function (newVal, oldVal) {
-        if (newVal !== undefined) {
-          gapi.client.load('drive', 'v3', function () {
-            getAboutInfo();
-            getFileLists();
-          });
-        }
-      })
+      gapi.client.load('drive', 'v3', function () {
+        getAboutInfo();
+        getFileLists();
+      });
     }
 
     function getAboutInfo () {
@@ -70,7 +64,6 @@
 
     function roundTo(size, pow, dec) {
       var intVal = Math.round( +(+(size) + 'e' + (dec - pow)) );
-      console.log(+(intVal + 'e' + -dec));
       return +(intVal + 'e' + -dec);
     }
 
@@ -88,7 +81,6 @@
       });
 
       delReq.execute(removeInArray);
-      //removeInArray();
 
       function removeInArray() {
         for (var i = 0; i < vm.files.length; i++) {

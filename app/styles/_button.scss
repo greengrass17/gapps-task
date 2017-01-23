@@ -1,3 +1,21 @@
+$background-color: (
+  'warn': #fff,
+  'raised': map-get($gapps-color, 'warn')
+);
+
+$txt-color: (
+  'warn': map-get($gapps-color, 'warn'),
+  'raised': #fff
+);
+
+@mixin box-shadow($color, $dark, $desaturate) {
+  box-shadow: 0 2px 0 desaturate(darken($color, $dark), $desaturate);
+}
+
+@mixin background-color($color, $dark, $desaturate) {
+  background-color: desaturate(darken($color, $dark), $desaturate);
+}
+
 .g-button {
   text-transform: uppercase;
   border-radius: 5px;
@@ -11,9 +29,6 @@
   &:not(.g-icon-button) {
     padding: 0 16px;
   }
-  &.g-icon-button {
-    padding: none;
-  }
   &:active {
     box-shadow: none !important;
     transform: translate(0, 2px);
@@ -21,38 +36,21 @@
   &:focus {
     outline: none;
   }
-  &.g-warn {
-    &:not(.g-raised) {
-      box-shadow: 0 2px 0 desaturate(darken(#fff, 20%), 40%);
-//      &:hover {
-//        box-shadow: 0 3px 0 darken(#fff, 20%);
-//      }
-      &:active {
-        background-color: desaturate(darken(#fff, 8%), 20%);
+  @each $key, $value in $background-color {
+    &.g-#{$key} {
+      color: map-get($txt-color, $key);
+      background-color: $value;
+      @include box-shadow($value, 20%, 40%);
+      &:hover {
+        @include background-color($value, 10%, 16%);
+        @include box-shadow($value, 30%, 60%);
       }
-    }
-    &.g-raised {
-      box-shadow: 0 2px 0 desaturate(darken(map-get($gapps-color, 'warn'), 20%), 40%);
-//      &:hover {
-//        box-shadow: 0 3px 0 darken(map-get($gapps-color, 'warn'), 20%);
-//      }
       &:active {
-        background-color: desaturate(darken(map-get($gapps-color, 'warn'), 8%), 20%);
+        @include background-color($value, 8%, 20%);
       }
     }
   }
   &[disabled] {
     background-color: rgba(0, 0, 0, 0.12);
-  }
-}
-
-.g-warn {
-  &:not(.g-raised) {
-    color: map-get($gapps-color, 'warn');
-    background-color: #fff;
-  }
-  &.g-raised {
-    color: #fff;
-    background-color: map-get($gapps-color, 'warn');
   }
 }

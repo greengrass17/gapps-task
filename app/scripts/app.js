@@ -16,10 +16,11 @@ angular
   'chart.js'
 ])
 
-.run(function ($rootScope, $state, GoogleSignin) {
-  $rootScope.$on('ng-google-signin:isSignedIn', function () {
-    console.log(GoogleSignin.getBasicProfile());
-    $rootScope.currentUser = GoogleSignin.getBasicProfile();
+.run(function ($rootScope, $state) {
+  $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+    event.preventDefault();
+    console.log(error);
+    $state.go('login');
   })
 })
 
@@ -39,7 +40,7 @@ function setConfig (GoogleSigninProvider, $stateProvider, $urlRouterProvider, Ch
     scope: SCOPES.join(' '),
   });
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/main');
   $stateProvider
 
     .state('login', {
@@ -54,7 +55,17 @@ function setConfig (GoogleSigninProvider, $stateProvider, $urlRouterProvider, Ch
     abstract: true,
     templateUrl: "views/nav.html",
     controller: 'NavCtrl',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    resolve: {
+      currentUser: function (GoogleSignin, $rootScope, $q) {
+        var defer = $q.defer();
+        $rootScope.$on('ng-google-signin:currentUser', function (event, user) {
+          if (user.isSignedIn()) defer.resolve(user.getBasicProfile())
+          else defer.reject('Unauthenticated');
+        })
+        return defer.promise;
+      }
+    }
   })
 
   .state('nav.main', {
